@@ -25,7 +25,7 @@ SECRET_KEY = 'kde3eioc_4384q=!v=khoe&1o@h+hjwo$-e-7w-g(k103w-!^2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['port-8000.project-o-yehiamlabib829813.codeanyapp.com']
+ALLOWED_HOSTS = ['port-8000.project-o-yehiamlabib829813.codeanyapp.com', 'localhost']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Account',
+    'Offer',
 ]
 
 MIDDLEWARE = [
