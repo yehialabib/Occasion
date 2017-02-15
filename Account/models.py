@@ -13,3 +13,9 @@ class client(models.Model):
     description = models.TextField( null=True)
     def __str__(self):
         return self.name
+
+class follow(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    client = models.ForeignKey(client,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.username + " - " + self.client.name
