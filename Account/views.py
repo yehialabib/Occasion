@@ -10,24 +10,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
 
 
-def account(request):
-     user = request.user
-     if(client.objects.filter(user=user).count()==0):
-         follows = get_followed_clients(user)
-         data = {
-         'follows':follows,
-         'user':user
-         }
-         return render(request, "User/account.html",data)
-     else:
-         c=client.objects.filter(user=user).first()
-         offers = get_all_offers(c)
-         data={
-            'client':c,
-            'followers': str(follow.objects.filter(client=c).count()),
-            'offers': offers
-         }
-         return render(request, "Client/dashboard.html",data)
+# def account(request):
+#      user = request.user
+#      if(client.objects.filter(user=user).count()==0):
+#          follows = get_followed_clients(user)
+#          data = {
+#          'follows':follows,
+#          'user':user
+#          }
+#          return render(request, "User/account.html",data)
+#      else:
+#          c=client.objects.filter(user=user).first()
+#          offers = get_all_offers(c)
+#          data={
+#             'client':c,
+#             'followers': str(follow.objects.filter(client=c).count()),
+#             'offers': offers
+#          }
+#          return render(request, "Client/dashboard.html",data)
 
 def auth(request):
     if request.method == "POST":
