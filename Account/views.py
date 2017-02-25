@@ -3,7 +3,7 @@ import json
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from Account.functions import get_followed_clients
+from Account.functions import get_followed_clients,addUser
 from Account.models import client,follow
 from Offer.functions import get_all_offers
 from django.contrib.auth.decorators import login_required
@@ -59,3 +59,17 @@ def account(request):
             return render(request, "Client/dashboard.html",data)
     else:
         return render(request, "Landing/login.html")
+def signUp(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        pass_1 = request.POST.get('password1')
+        pass_2 = request.POST.get('password2')
+        if pass_1 == pass_2:
+            addUser(first_name,last_name,pass_1,username,email)
+             
+        else:
+             error = " Password Mismatch "
+             return render(request, 'login/signup.html',{"error":error})
