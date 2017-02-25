@@ -8,12 +8,12 @@ def get_followed_clients(user):
 
 
 def add_user(first_name,last_name,password,username,email):
-	count=User.objects.filter(email=email).count()
-	if(count==0):
+    count = User.objects.filter(email=email).count()
+    if(count==0):
         user = User.objects.create_user(username=username,password=password,first_name=first_name,last_name=last_name,email=email)
         return True
-	else:
-		return False
+    else:
+        return False
 
 
 

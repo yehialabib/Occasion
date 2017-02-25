@@ -61,7 +61,7 @@ def account(request):
         return render(request, "Landing/login.html")
 
 
-def signUp(request):
+def register(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         username = request.POST.get('username')
