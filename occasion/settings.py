@@ -26,8 +26,9 @@ SECRET_KEY = 'kde3eioc_4384q=!v=khoe&1o@h+hjwo$-e-7w-g(k103w-!^2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['port-8000.project-o-yehiamlabib829813.codeanyapp.com', 'localhost']
+ALLOWED_HOSTS = ['port-8000.project-o-yehiamlabib829813.codeanyapp.com', 'localhost:8100']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -40,16 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Account',
     'Offer',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'occasion.urls'

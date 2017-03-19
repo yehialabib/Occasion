@@ -7,13 +7,22 @@ def get_followed_clients(user):
     return queryset
 
 
-def add_user(first_name,last_name,password,username,email):
-    count = User.objects.filter(email=email).count()
-    if(count==0):
-        user = User.objects.create_user(username=username,password=password,first_name=first_name,last_name=last_name,email=email)
-        return True
+def add_user(password,username,email):
+    count1 = User.objects.filter(email=email).count()
+    count2 = User.objects.filter(username=username).count()
+    if((count1==0)and(count2==0)):
+        user = User.objects.create_user(username=username,password=password,email=email)
+        print("------------------")
+        print("Added new user")
+        print(email)
+        print(username)
+        print("------------------")
+        return '{"err":""}'
     else:
-        return False
+        if(count1!=0):
+          return '{"err":"Email already exists"}'
+        else:
+          return '{"err":"Username already exists"}'
 
 
 
