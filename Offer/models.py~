@@ -9,7 +9,7 @@ class offer(models.Model):
     photo = models.CharField(null=True, max_length=200)
     description = models.TextField(null=True, max_length=1000)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-    likes = models.IntegerField(default=0)
-    views = models.IntegerField(default=0)
+    likes = models.IntegerField()
+    views = models.IntegerField()
     def __str__(self):
         return self.client.name + "-" + self.title

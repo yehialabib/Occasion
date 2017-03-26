@@ -7,15 +7,12 @@ from Account.models import follow
 def get_all_offers(client):
     queryset = offer.objects.filter(client=client)
     return queryset
-  
 def user_offers_for_display(User):
     Users_follows = follow.objects.filter(user=User)
     displayed_offers = offer.objects.filter(client__in=Users_follows.values('client'))
     return displayed_offers
-  
 def add_offer(client, title, description, photo):
     offer.objects.create(title=title,client=client,photo=photo,description=description)
-    
 def delete(ofer):
     offer.objects.filter(id=ofer).delete()
 # Testings
