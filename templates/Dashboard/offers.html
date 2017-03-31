@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="{% static '/css/materialize.css' %}" >
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    <script src="{% static 'js/jquery.js' %"></script> -->
+   <script src="{% static 'js/materialize.js' %}"></script>
+</head>
+<body class="">
+  <nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center"><img style="height:50px;margin-top:7px;" src="{{client.logo}}"/></a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="../home">HOME</a></li>
+      <li><a href="../system">SYSTEM</a></li>
+      <li><a href="../offers">OFFERS</a></li>
+    </ul>
+  </div>
+  </nav>
+<div class="row" style="margin-top:10px;padding-right:150px;padding-left:150px;padding-top:30px;" >
+  <div  style="margin-bottom:40px;" Class="col l12">
+    <h4 class="center-align">OFFERS</h4>
+   <div style="margin-left:50px;float:right;">
+        <a href="../createOffer"><img src="http://icons.veryicon.com/png/System/Line/Add.png" style="width:60px;"></a>
+      
+    </div>
+   
+  </div>
+     <div class="col l3">
+        {% for offer in first %}
+          <img style="width:100%;margin-top:15px"src='{{offer.photo}}'/><br>
+        {% endfor %}
+     </div>
+     <div class="col l3">
+        {% for offer in second %}
+           <img style="width:100%;margin-top:15px"src='{{offer.photo}}'/><br>
+        {% endfor %}
+     </div>
+     <div class="col l3">
+        {% for offer in third %}
+          <img style="width:100%;margin-top:15px"src='{{offer.photo}}'/><br>
+        {% endfor %}
+     </div>
+     <div class="col l3">
+        {% for offer in fourth %}
+          <img style="width:100%;margin-top:15px"src='{{offer.photo}}'/><br>
+        {% endfor %}
+     </div>
+  
+<!--   <div class="col l3">
+    <img style="width:100%;"src="https://wl3-cdn.landsecurities.com/sites/default/files/styles/whats_on_media_list_large/public/images/special-offers/thumbnails/800x800_wotw-08560021.jpg?itok=08PNDfE-"/><br>
+    <img style="width:100%;"src="http://smartcanucks.ca/wp-content/uploads/2014/05/Lacoste.png"/><br>
+    <img style="width:100%;"src="http://uaetodayoffers.com/wp-content/uploads/2016/10/Lacoste-Watch-Offers.jpg"/><br>
+  </div>
+
+  <div class="col l3">
+    <img style="width:100%;"src="http://sneak-art.com/wp-content/uploads/2014/11/Black-friday-adidas.jpg"/><br>
+    <img style="width:100%;"src="http://www.greenberg.co.uk/Stewart-Greenberg-Opticians/images/stories/AABC/offers/wayfarer-89.png"/><br>
+  </div>
+
+  <div class="col l3">
+    <img style="width:100%;"src="https://wl3-cdn.landsecurities.com/sites/default/files/styles/whats_on_media_list_large/public/images/special-offers/thumbnails/800x800_wotw-08560021.jpg?itok=08PNDfE-"/><br>
+    <img style="width:100%;"src="http://smartcanucks.ca/wp-content/uploads/2014/05/Lacoste.png"/><br>
+    <img style="width:100%;"src="http://uaetodayoffers.com/wp-content/uploads/2016/10/Lacoste-Watch-Offers.jpg"/><br>
+  </div>
+
+  <div class="col l3">
+    <img style="width:100%;"src="http://www.greenberg.co.uk/Stewart-Greenberg-Opticians/images/stories/AABC/offers/wayfarer-89.png"/><br>
+    <img style="width:100%;"src="http://sneak-art.com/wp-content/uploads/2014/11/Black-friday-adidas.jpg"/><br>
+  </div> -->
+
+</div>
+</body>
+</html>

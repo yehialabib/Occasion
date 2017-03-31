@@ -15,8 +15,5 @@ def login(request):
         username = request.GET.get('username')
         password = request.GET.get('password')
         login = auth(username,password)
-        print(username)
-        print(password)
-        print(login);
         return HttpResponse(login)
       

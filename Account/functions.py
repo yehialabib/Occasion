@@ -28,10 +28,22 @@ def add_user(password,username,email):
 def auth( username , password ):
   user = authenticate( username=username, password=password )
   if(user != None):
-     return '{"err" : "" , "id" : ' + str(user.id) + '}'
+     return '{"err" : "" , "pk" : ' + str(user.id) + '}'
     
   else:
       return '{"err":"Username Or Password Incorrect"}'
+    
+    
+def auth_client( username , password ):
+  user = authenticate( username=username, password=password )
+  if(user != None):
+     check = client.objects.filter(user=user.id)
+     if(check.count()>0):
+        return user
+     else:
+      return 'none'
+  else:
+      return 'none'
 
 
 
@@ -40,3 +52,4 @@ def auth( username , password ):
 # print(auth('youssef','hesoyamhesoyam'))
 # x = serializers.serialize("json", follow.objects.filter(user = 1))
 # print(x)
+# print(auth_client('zara','hesoyamhesoyam'))

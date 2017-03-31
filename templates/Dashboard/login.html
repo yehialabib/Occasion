@@ -1,0 +1,32 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="{% static '/css/materialize.css' %}" >
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    <script src="{% static 'js/jquery.js' %"></script> -->
+   <script src="{% static 'js/materialize.js' %}"></script>
+</head>
+<body>
+
+<div class="row" style="margin-top:10px;padding:30px;" >
+  <div style="margin-bottom:40px;" Class="col l12">
+    <h4 class="center-align">Dashboard Login</h4>
+  </div>
+  <div class="col l12 " style="margin-top:50px;" >
+    <div class="col l4 offset-l4">  
+      <form method="POST" action=".">{% csrf_token %}
+        <input type="text" style="width:100%;font-size:30pt;" name="username" class="center-align" placeholder="Username">
+        <input type="password" style="width:100%;font-size:30pt;margin-top:50px;" name="password" class="center-align" placeholder="Password">
+        <input type = "submit" style="width:100%;" class=" waves-effect waves-light btn-large" value="login">
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
