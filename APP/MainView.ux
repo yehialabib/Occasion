@@ -1,0 +1,36 @@
+<App>
+	<JavaScript>
+  	module.exports = {
+        	gotoLogin: function() { router.push("login"); },
+        	gotoRegister: function() { router.push("register"); },
+    	};
+
+    </JavaScript> 
+
+
+     	<Router ux:Name="router" />
+
+       <Navigator DefaultPath="splash">
+       	 <LoginPage ux:Template="login" />
+         <SplashPage ux:Template="splash"  />
+         <RegisterPage ux:Template="register" />
+        </Navigator>
+
+
+ 	<Page ux:Class="SplashPage" Padding="20" Background="#333">
+    	<!-- <Text FontSize="60" Margin="0,30,0,0" Color="#fff" TextAlignment="Center">OCAZION </Text> -->
+    	<Image Margin="0,0,0,190" Width="70%" Url="http://www.bootcss.com/p/flat-ui/images/illustrations/bag.png"/>
+    	<Button Alignment="BottomLeft" Color="#FF6666" Height="15%" Width="50%" Clicked="{gotoLogin}">
+    		<Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff">Login</Text>
+    	</Button>
+    	<Button   Alignment="BottomRight" Color="#ccc" Height="15%" Width="50%" >
+    		<Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff" Clicked="{gotoRegister}">Register</Text>
+    	</Button>
+	</Page>
+
+
+
+
+</App>
+
+
