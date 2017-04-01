@@ -26,9 +26,16 @@ def add_offer(client, title , photo):
     
 def delete(ofer):
     offer.objects.filter(id=ofer).delete()
+
+def edit_offer(offer1, title, description): 
+    off=offer.objects.filter(id=offer1).first()
+    off.title=title
+    off.description=description
+    off.save()
     
-# Testings
+# Testing
 #print(get_all_offers(client.objects.filter(name='Fridays').first()))
-# print(serializers.serialize("json", get_all_user_offers(User.objects.filter(username="youssef").first())))
+#print(serializers.serialize("json", get_all_user_offers(User.objects.filter(username="youssef").first())))
 #add_offer(client.objects.filter(name='Nike').first(), "New Mercurial Boots","Your dream football shoes are out now!","photo")
 #delete(offer.objects.filter(title="1234").first())
+#edit_offer(18, "New Title","New Description")

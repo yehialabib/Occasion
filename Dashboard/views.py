@@ -83,7 +83,7 @@ def create_offer(request):
       add_offer(c,title,image)
       return redirect("offers")
     
-  return render(request, "Dashboard/create_offer.html" ,)  
+  return render(request, "Dashboard/create_offer.html" , data)  
   
   
   

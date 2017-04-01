@@ -32,6 +32,8 @@
       <form method="POST" action="createOffer">{% csrf_token %}
         <input type="text" style="width:100%;font-size:30pt;" name="title" class="center-align" placeholder="Title">
         <input type="text" style="margin-top:100px;width:100%;font-size:30pt;" name="image" class="center-align" placeholder="Image">
+          <textarea style="margin-top:100px;font-size:15pt;" placeholder="Description"></textarea>
+         <input type="date" style="margin-top:100px;font-size:15pt;" name="end_date"  placeholder="End Date">
         <input type = "submit" style="float:right;margin-top:100px;" class="grey darken-3 waves-effect waves-light btn-large" value="Create">
       </form>
     </div>
