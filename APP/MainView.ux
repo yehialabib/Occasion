@@ -56,6 +56,39 @@
 
 
 
+	<Page ux:Class="RegisterPage" Padding="20" Background="#333">
+    	<StackPanel>
+            <Text Color="#F00" TextAlignment="Center" FontSize="15" Value="{error}"></Text>
+    		<TextInput ux:Name="username" Value="{username}" Margin="0,20,0,0" TextAlignment="Center" TextColor="#fff" FontSize="20" PlaceholderText="Username" PlaceholderColor="#ccc" Height="70" Padding="5" >
+        		<Rectangle Layer="Background">
+            		<Stroke Width="2" Brush="#BBB" />
+        		</Rectangle>
+    		</TextInput>
+
+    		<TextInput  Margin="0,20,0,0" ux:Name="email" Value="{email}" TextColor="#fff" TextAlignment="Center" FontSize="20" PlaceholderText="Email" PlaceholderColor="#ccc" Height="70" Padding="5" >
+        		<Rectangle Layer="Background">
+            		<Stroke Width="2" Brush="#BBB" />
+        		</Rectangle>
+    		</TextInput>
+
+    		<TextInput IsPassword="true" Margin="0,20,0,0" Value="{password1}" ux:Name="password1" TextColor="#fff" TextAlignment="Center" FontSize="20" PlaceholderText="Password" PlaceholderColor="#ccc" Height="70" Padding="5" >
+        		<Rectangle Layer="Background">
+            		<Stroke Width="2" Brush="#BBB" />
+        		</Rectangle>
+    		</TextInput>
+
+    		<TextInput IsPassword="true" Margin="0,20,0,0" Value="{password2}" ux:Name="password2" TextColor="#fff" TextAlignment="Center" FontSize="20" PlaceholderText="Re-enter Password" PlaceholderColor="#ccc" Height="70" Padding="5" >
+        		<Rectangle Layer="Background">
+            		<Stroke Width="2" Brush="#BBB" />
+        		</Rectangle>
+    		</TextInput>
+
+    	</StackPanel>
+
+    		<Button Clicked="{register}"  Alignment="Bottom" Color="#ccc"  Height="70" >
+    			<Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff">Create Account</Text>
+    		</Button>
+	</Page>
 
 </App>
 
