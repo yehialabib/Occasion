@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="{% static '/css/materialize.css' %}" >
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <!--    <script src="{% static 'js/jquery.js' %"></script> -->
    <script src="{% static 'js/materialize.js' %}"></script>
 </head>
@@ -33,7 +34,22 @@
   </div>
      <div class="col l3">
         {% for offer in first %}
-          <img style="width:100%;margin-top:15px"src='{{offer.photo}}'/><br>
+       <img style="width:100%;margin-top:15px"src='{{offer.photo}}'/><br>
+<!--            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src='{{offer.photo}}'>
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{offer.title}}<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal" style="background-color:rgba(0,0,0,0.8);">
+       <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span><br>
+      <h4 class="white-text center-align">VIEWS</h4>
+      <h5 class="white-text center-align">{{offer.likes}}</h5>
+      <h4 class="white-text center-align">LIKES</h4>
+      <h5 class="white-text center-align">{{offer.views}}</h5>
+    </div>
+  </div> -->
         {% endfor %}
      </div>
      <div class="col l3">
