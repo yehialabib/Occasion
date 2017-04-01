@@ -1,8 +1,81 @@
 <App>
 	<JavaScript>
+            var Observable = require("FuseJS/Observable");
+        var username = Observable("");
+        var email = Observable("");
+        var password1 = Observable("");
+        var password2 = Observable("");
+        var error = Observable("");
+        var user  = Observable(0);
+        var offers = Observable();
+
+        function register(){
+            error.value="";
+            Username = username.value;
+            Email = email.value;
+            Password1 = password1.value
+            Password2 = password2.value
+            if(Username!=''&&Email!=''&&Password1!=''){
+                if(Password1 == Password2){
+                    body = "?username=" + Username + "&email=" + Email + "&password=" + Password1 ;
+                    var url = "http://port-8000.project-o-yehiamlabib829813.codeanyapp.com/api/";
+                    fetch(url+"register/" + body,{}).then(function(response)
+                        { response.json().then(function(data){
+                           var err = data['err'];
+                           if(err!=""){
+                            error.value = err;
+                           }else{
+                            error.value=err;
+                            router.push("home");
+                            username.value="";
+                            password1.value="";
+                           }
+                        });
+                    });
+                }else{
+                    error.value="Passwords Mismatch";
+                }
+            }else{
+                error.value="Please Fill Out All The Fields";
+            }
+        }
+
+        function login(){
+            error.value="";
+            Username = username.value;
+            Password1 = password1.value;
+            if(Username!=''&&Password1!=''){
+                body = "?username=" + Username + "&password=" + Password1 ;
+                var url = "http://port-8000.project-o-yehiamlabib829813.codeanyapp.com/api/";
+                fetch(url+"login/" + body,{}).then(function(response)
+                        { response.json().then(function(data){
+                           var err = data['err'];
+                           if(err!=""){
+                            error.value = err;
+                           }else{
+                            user.value = data['pk'];
+                            load_offers();
+                           }
+                        });
+                    });
+            }
+        }
+        
   	module.exports = {
         	gotoLogin: function() { router.push("login"); },
         	gotoRegister: function() { router.push("register"); },
+          gotoLogin: function() { router.push("login"); },
+        	gotoHome: function() { router.push("home"); },
+        	gotoRegister: function() { router.push("register"); },
+          gotoHori: function() { router.push("hori"); },
+          register : register,
+          login:login,
+          user:user,
+          username: username,
+          email:email,
+          password1: password1,
+          password2: password2,
+          error:error,
     	};
 
     </JavaScript> 
