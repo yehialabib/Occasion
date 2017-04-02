@@ -26,7 +26,7 @@
                             error.value = err;
                            }else{
                             error.value=err;
-                            router.push("home");
+                            router.push("app");
                             username.value="";
                             password1.value="";
                            }
@@ -74,7 +74,7 @@
                             for(var i=0;i<size;i++){
                                 offers.add(data[i]['fields']);
                             }
-                            router.push("home");
+                            router.push("app");
                             error.value=err;
                             username.value="";
                             password1.value="";
@@ -85,9 +85,7 @@
 
     	module.exports = {
         	gotoLogin: function() { router.push("login"); },
-        	gotoHome: function() { router.push("home"); },
         	gotoRegister: function() { router.push("register"); },
-            gotoHori: function() { router.push("hori"); },
             register : register,
             login:login,
             user:user,
@@ -101,28 +99,87 @@
 
     </JavaScript> 
 
-
-     	<Router ux:Name="router" />
+        <Router ux:Name="router" />
 
        <Navigator DefaultPath="splash">
-       	 <LoginPage ux:Template="login" />
+         <LoginPage ux:Template="login" />
          <SplashPage ux:Template="splash"  />
-         <HomePage ux:Template="home" />
          <RegisterPage ux:Template="register" />
-         <HoriPage ux:Template="hori" />
+         <AppPage  ux:Template="app" />
         </Navigator>
 
 
- 	<Page ux:Class="SplashPage" Padding="20" Background="#333">
-    	<!-- <Text FontSize="60" Margin="0,30,0,0" Color="#fff" TextAlignment="Center">OCAZION </Text> -->
-    	<Image Margin="0,0,0,190" Width="70%" Url="http://www.bootcss.com/p/flat-ui/images/illustrations/bag.png"/>
-    	<Button Alignment="BottomLeft" Color="#FF6666" Height="15%" Width="50%" Clicked="{gotoLogin}">
-    		<Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff">Login</Text>
-    	</Button>
-    	<Button   Alignment="BottomRight" Color="#ccc" Height="15%" Width="50%" >
-    		<Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff" Clicked="{gotoRegister}">Register</Text>
-    	</Button>
-	</Page>
+    <Page ux:Class="SplashPage" Padding="20" Background="#333">
+
+        <!-- <Text FontSize="60" Margin="0,30,0,0" Color="#fff" TextAlignment="Center">OCAZION </Text> -->
+        <Image Margin="0,0,0,190" Width="70%" Url="http://www.bootcss.com/p/flat-ui/images/illustrations/bag.png"/>
+        <Button Alignment="BottomLeft" Color="#FF6666" Height="15%" Width="50%" Clicked="{gotoLogin}">
+            <Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff">Login</Text>
+        </Button>
+        <Button   Alignment="BottomRight" Color="#ccc" Height="15%" Width="50%" >
+            <Text FontSize="35" TextAlignment="Center" Alignment="VerticalCenter" Color="#fff" Clicked="{gotoRegister}">Register</Text>
+        </Button>
+    </Page>
+
+
+
+ <Page  ux:Class="AppPage" Background="#333">
+
+     <Panel Alignment="TopRight" Width="100%" Height="50" Background="#333">
+        <Text ux:Name="pageTitle" Color="#fff" Alignment="VerticalCenter" TextAlignment="Center" Value="Home"></Text>
+     </Panel>
+     <Grid Background="#333" Alignment="Bottom" Height="50" ColumnCount="5">
+
+         <Panel Padding="5,10,5,10" >
+             <Image File="Assets/home.png"/>
+             <Clicked>
+                 <Set navigation.Active="HomePage" />
+                <Set pageTitle.Value="Home"/>
+             </Clicked>
+         </Panel>
+
+         <Panel Padding="5,10,5,10" >
+             <Image Url="http://www.iconsdb.com/icons/preview/white/dice-xxl.png"/>
+             <Clicked>
+                 <Set navigation.Active="tPage" />
+                 <Set pageTitle.Value="Games"/>
+             </Clicked>
+         </Panel>
+
+         <Panel Padding="5,10,5,10" >
+             <Image File="Assets/placeholder.png"/>
+         </Panel>
+
+         <Panel Padding="5,10,5,10" >
+             <Image Url="https://cdn.shopify.com/s/files/1/0489/2545/t/1/assets/icon-search-white.png?11740338802711173635"/>
+         </Panel>
+
+         <Panel Padding="5,10,5,10" >
+             <Image Url="http://flaticons.net/icons/Application/User-Profile.png"/>
+         </Panel>
+
+     </Grid>
+         <PageControl ux:Name="navigation">
+
+     <Page ux:Name="HomePage" Background="#333" Padding="10,30,10,10">
+         <ScrollView  AllowedScrollDirections="Vertical">
+                 <StackPanel >
+                      <Each Items="{offers}">
+                         <Image  Margin="0,0,0,20" Url="{photo}"/>
+                      </Each>
+                 </StackPanel>
+         </ScrollView>   
+     </Page>
+
+     <Page ux:Name="tPage" Background="#05f" Padding="10,10,10,10">
+         
+     </Page>
+
+ </PageControl>
+ </Page>
+
+
+  
 
 
 
@@ -186,134 +243,6 @@
     		</Button>
 	</Page>
 
-
-
-
-
-<!-- 	<Page ux:Class="HomePage" Background="#333">
-		<ScrollView Margin="10,10,10,10" AllowedScrollDirections="Vertical">
-			<StackPanel>
-            <Button Clicked="{gotoLogin}" >
-			<StackPanel  Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical" Width="100%"  Background="#fff">
-				
-				<Image  MaxHeight="90" Url="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1000px-Logo_NIKE.svg.png"/>
-			</StackPanel>
-            </Button>
-
-			<Button Clicked="{gotoHori}" >
-			<StackPanel  Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Width="100%"  Background="#fff">
-				<Image  MaxHeight="150" Url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Aeropostale_logo.svg/2000px-Aeropostale_logo.svg.png"/>
-			
-			</StackPanel>
-            </Button>
-
-
-			<StackPanel  Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Width="100%" Background="#fff">
-				<Image  Url="https://upload.wikimedia.org/wikipedia/it/f/f9/Pull_%26_Bear_Logo.png"/>
-				
-			</StackPanel>
-
-			<StackPanel  Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Width="100%" Background="#fff">
-				<Image  MaxHeight="150" Url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/RadioShack_logo.svg/1000px-RadioShack_logo.svg.png"/>
-			</StackPanel>
-
-		
-
-			
-
-
-		</StackPanel>
-
-
-    	</ScrollView>	
-	</Page> -->
-
-
-
-    <Page  ux:Class="HoriPage" Background="#333">
-        <ScrollView>
-            <Panel Padding="10,10,10,20" Width="100%" MinHeight="100%"  Background="#F5D76E">
-                <StackPanel Margin="0,0,0,50">
-                <Image  Margin="20,0,20,40" MaxHeight="80"  Url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Aeropostale_logo.svg/2000px-Aeropostale_logo.svg.png"/>
-                  <Text FontSize="30" Color="#360C73"  TextAlignment="Center" Alignment="VerticalCenter"></Text>
-                  <ScrollView  Background="#F5D76E"  AllowedScrollDirections="Horizontal">
-                    <StackPanel Orientation="Horizontal">
-                        <Image  MaxWidth="100%" Url="https://s-media-cache-ak0.pinimg.com/736x/17/03/2b/17032ba3369a32163d262ec669e7b143.jpg"/>
-                        <Image MaxWidth="100%" Url='https://s-media-cache-ak0.pinimg.com/564x/eb/9a/88/eb9a887d0ef5d5ed0264a4f290789a6c.jpg'/>
-                        <Image  MaxWidth="100%" Url=' https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Jeans_for_men.jpg/220px-Jeans_for_men.jpg'/>
-                        <Image  MaxWidth="100%" Url=' https://s-media-cache-ak0.pinimg.com/originals/e8/a7/2b/e8a72baf07005a536f24a8d0a622a72c.jpg'/>
-                        <Image  MaxWidth="100%" Url=' https://dtpmhvbsmffsz.cloudfront.net/posts/2016/10/26/58113c1098182954ff002215/s_58113c1198182954ff002217.jpg'/>                  
-                    </StackPanel>
-                  </ScrollView>
-                </StackPanel>
-                
-            </Panel>
-        </ScrollView>
-    </Page>
-
-
-
-
-    <Page ux:Class="HomePage1" Background="#333">
-        <ScrollView Margin="10,10,10,10" AllowedScrollDirections="Vertical">
-            <StackPanel>
-                <Button Clicked="{gotoLogin}" >
-                    <StackPanel  Height="110" Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Background="#FF6666" Width="100%" >
-                        
-                        <Image  Alignment="VerticalCenter" MaxHeight="80" MaxWidth="90%" Url="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1000px-Logo_NIKE.svg.png"/> 
-                    </StackPanel>
-                </Button>
-
-                <Button Clicked="{gotoHori}" >
-                    <StackPanel  Height="110" Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Width="100%" Background="#F5D76E">
-                        <Image  MaxHeight="80" MaxWidth="90%"  Alignment="VerticalCenter" Url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Aeropostale_logo.svg/2000px-Aeropostale_logo.svg.png"/>
-                    </StackPanel>
-                </Button>
-
-                <StackPanel  Height="110" Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Width="100%" Background="#22A7F0">
-                    <Image  MaxHeight="80" MaxWidth="90%"  Alignment="VerticalCenter" Url="https://upload.wikimedia.org/wikipedia/it/f/f9/Pull_%26_Bear_Logo.png"/>        
-                </StackPanel>
-
-                <StackPanel Height="110" Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical"  Width="100%" Background="#fff">
-                    <Image  MaxHeight="80" MaxWidth="90%"  Alignment="VerticalCenter" Url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/RadioShack_logo.svg/1000px-RadioShack_logo.svg.png"/>
-                </StackPanel>
-
-                <StackPanel  Height="110" Margin="0,10,0,0" Padding="10,20,10,20" Orientation="Vertical" MaxHeight="50%" Width="100%" Background="#16A085">
-                    <Image MaxHeight="80" MaxWidth="90%"  Alignment="VerticalCenter" Url="http://flaticons.net/icons/Brand%20Identity/Crocs.png"/>
-                </StackPanel>
-            </StackPanel>
-
-
-        </ScrollView>   
-    </Page>
-
-
-
-
-<!--     <Page ux:Class="HomePage" Background="#333" Padding="10,10,10,10">
-        <ScrollView Margin="0,0,0,0" AllowedScrollDirections="Vertical">
-                <StackPanel Margin="0,0,0,0">
-                    <Image Margin="0,0,0,20" File="Assets/nike.png"/>
-                    <Image Margin="0,0,0,20" File="Assets/aero.jpg"/>
-                    <Image Margin="0,0,0,20" Url="https://wl3-cdn.landsecurities.com/sites/default/files/styles/whats_on_media_list_large/public/images/special-offers/thumbnails/800x800_wotw-08560021.jpg?itok=08PNDfE-"/>
-                    <Image Margin="0,0,0,20" Url="http://smartcanucks.ca/wp-content/uploads/2014/05/Lacoste.png"/>
-                    <Image Margin="0,0,0,20" Url="http://sneak-art.com/wp-content/uploads/2014/11/Black-friday-adidas.jpg"/>
-                    <Image Margin="0,0,0,20" Url="http://www.greenberg.co.uk/Stewart-Greenberg-Opticians/images/stories/AABC/offers/wayfarer-89.png"/>
-                    <Image Margin="0,0,0,20" Url="http://uaetodayoffers.com/wp-content/uploads/2016/10/Lacoste-Watch-Offers.jpg"/>
-                     
-                </StackPanel>
-        </ScrollView>   
-    </Page> -->
-
-    <Page ux:Class="HomePage" Background="#333" Padding="10,10,10,10">
-        <ScrollView Margin="0,0,0,0" AllowedScrollDirections="Vertical">
-                <StackPanel Margin="0,0,0,0">
-                     <Each Items="{offers}">
-                        <Image  Margin="0,0,0,20" Url="{photo}"/>
-                     </Each>
-                </StackPanel>
-        </ScrollView>   
-    </Page>
 </App>
 
 
